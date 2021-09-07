@@ -22,6 +22,9 @@
    --pad: 30px;
    --minw: 1000px;
 }
+.js-head {
+   background-color: #091d3b49;
+}
 
 body {
    font-family: Circe;
@@ -314,14 +317,13 @@ p {
    padding-top: 75px;
    padding-bottom: 75px;
 }
-
 .side-menu-wrapper {
    display: flex;
    justify-content: space-between;
 }
 @media (max-width: 1024px) {
    .side-menu-wrapper {
-      display: grid;
+      /* display: grid; */
       row-gap: 30px;
       grid-template-columns: 1fr 1fr;
       justify-content: space-between;
