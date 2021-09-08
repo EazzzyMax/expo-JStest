@@ -14,16 +14,16 @@
    <body>
       <div class="js-head">
          <h1>hello JS</h1>
-         <h1>Рандомизатор</h1>
+         <h1>Random-bot</h1>
 
-         <p>Размер рандомнго массива:</p>
-         <form action="" onsubmit="go(this)" >
-            <label for="len">Размер массива:</label>
-            <input name ="len" id="len" placeholder="1..9 999"/>
-            <label for="search">Искомое число в массиве:</label>
-            <input name="search" id="search" placeholder="1..len">
-            <input type="submit" value="Сгенерировать">
-         </form>
+         <label for="len">Array size:</label>
+         <input name="len" id="len" placeholder="1..9 999" />
+         <label for="search">Desired number:</label>
+         <input name="search" id="search" placeholder="1..len" />
+         <button onclick="go()">Generate</button>
+         <div id="for-result">
+            <h2>Result</h2>
+         </div>
       </div>
 
       <script src="js/script.js"></script>
@@ -64,8 +64,7 @@
                      </a>
                   </li>
                   <li class="tiles-item item2">
-                     <a href="blank.html"
-                        >оо
+                     <a href="blank.html">
                         <h3>Как добраться до Экспофорума</h3>
                         <p>Подробнее</p>
                      </a>

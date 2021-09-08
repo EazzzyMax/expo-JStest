@@ -11,9 +11,10 @@ function getRandomInt(min, max) {
 }
 
 //random array
-function randomArray(len) {
+function getRandomArrayOfInt(len) {
+   arr = [];
    for (let i = 0; i < len; i++) {
-      arr[i] = getRandomInt(1, len);
+      arr[i] = getRandomInt(0, len);
    }
    return arr;
 }
@@ -30,7 +31,6 @@ function bubbleSort(arr) {
       }
    }
 }
-
 
 function binarSearch(arr) {
    var left = 0;
@@ -63,8 +63,29 @@ function binarSearch(arr) {
 //    console.log('Элемент не найден')
 // }
 
-function go(form) {
-   
+function go() {
+   const len = Number(document.getElementById('len').value);
+   var result = document.getElementById('for-result');
+   if (len != 0) {
+      var arr = getRandomArrayOfInt(len);
 
-   return false;
+      result.innerHTML += '<p>';
+      arr.forEach((element) => {
+         result.innerHTML += element;
+         result.innerHTML += ' ';
+      });
+      result.innerHTML += '<p>';
+      
+      // arr = bubbleSort(arr)
+      // result.innerHTML += '<p>';
+      // arr.forEach((element) => {
+      //    result.innerHTML += element;
+      //    result.innerHTML += ' ';
+      // });
+      // result.innerHTML += '<p>';
+
+      result.innerHTML += '<div class="lineJS"></div>';
+   }
+
+   // result.innerHTML+='test'
 }

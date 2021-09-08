@@ -25,6 +25,11 @@
 .js-head {
    background-color: #091d3b49;
 }
+.lineJS {
+   width: 100%;
+   height: 1px;
+   background-color: white;
+}
 
 body {
    font-family: Circe;
