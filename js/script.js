@@ -65,4 +65,6 @@ function binarSearch(arr) {
 
 function go(form) {
    
+
+   return false;
 }

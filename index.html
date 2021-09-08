@@ -17,12 +17,12 @@
          <h1>Рандомизатор</h1>
 
          <p>Размер рандомнго массива:</p>
-         <form action="" onsubmit="go()">
-            <label for="len">Размер массива</label>
-            <input id="len" placeholder="1..9 999"/>
+         <form action="" onsubmit="go(this)" >
+            <label for="len">Размер массива:</label>
+            <input name ="len" id="len" placeholder="1..9 999"/>
             <label for="search">Искомое число в массиве:</label>
-            <input type="text" name="" id="search" placeholder="1..len">
-            <input type="submit" value="Сгенерировать"><np/butt
+            <input name="search" id="search" placeholder="1..len">
+            <input type="submit" value="Сгенерировать">
          </form>
       </div>
 
