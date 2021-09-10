@@ -16,13 +16,16 @@ function getRandomArrayOfInt(len) {
    for (let i = 0; i < len; i++) {
       arr[i] = getRandomInt(0, len);
    }
+   console.log(arr);
    return arr;
 }
 //bubble sort
-function bubbleSort(arr) {
+function bubbleSort(inArr) {
+   console.log('Вход: ', inArr);
    var c = 0;
-   for (let i = 0; i < length - 1; i++) {
-      for (let j = 0; j < length - 1 - i; j++) {
+   var arr = inArr;
+   for (let i = 0; i < arr.length - 1; i++) {
+      for (let j = 0; j < arr.length - 1 - i; j++) {
          if (arr[j] > arr[j + 1]) {
             c = arr[j];
             arr[j] = arr[j + 1];
@@ -30,9 +33,12 @@ function bubbleSort(arr) {
          }
       }
    }
+   10;
+   console.log('Выход: ', arr);
+   return arr;
 }
 
-function binarSearch(arr) {
+function binarSearch(arr, search) {
    var left = 0;
    var right = arr.length - 1;
    var center = 0;
@@ -69,21 +75,30 @@ function go() {
    if (len != 0) {
       var arr = getRandomArrayOfInt(len);
 
-      result.innerHTML += '<p>';
+      result.innerHTML += 'Random array: ';
       arr.forEach((element) => {
          result.innerHTML += element;
          result.innerHTML += ' ';
       });
-      result.innerHTML += '<p>';
-      
-      // arr = bubbleSort(arr)
-      // result.innerHTML += '<p>';
-      // arr.forEach((element) => {
-      //    result.innerHTML += element;
-      //    result.innerHTML += ' ';
-      // });
-      // result.innerHTML += '<p>';
 
+      result.innerHTML += '</br>Sorted array: ';
+      arr = bubbleSort(arr);
+      arr.forEach((element) => {
+         result.innerHTML += element;
+         result.innerHTML += ' ';
+      });
+
+      const search = Number(document.getElementById('search').value);
+
+      result.innerHTML += '</br></br>Search result:</br>';
+      ans = binarSearch(arr, search);
+      if (ans == -1) {
+         result.innerHTML += 'not found';
+      } else {
+         result.innerHTML += 'element position: ' + ans[0];
+         result.innerHTML += '</br>';
+         result.innerHTML += 'number of iterations: ' + ans[1];
+      }
       result.innerHTML += '<div class="lineJS"></div>';
    }
 
