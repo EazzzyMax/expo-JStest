@@ -10,6 +10,11 @@
    /* src: url('../fonts/plumb-regular.ttf') format('ttf'); */
    src: url('../fonts/plumb-regular.woff2') format('woff2');
 }
+/* @font-face {
+   font-family: 'Roboto Mono';
+   src: url('../fonts/RobotoMono-Regular.ttf') format('ttf');
+} */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
 :root {
    --blue: #2378fc;
@@ -29,6 +34,10 @@
    width: 100%;
    height: 1px;
    background-color: white;
+}
+
+#for-result {
+   font-family: 'Roboto Mono', monospace;
 }
 
 body {

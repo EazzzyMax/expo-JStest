@@ -1,8 +1,3 @@
-console.log('хуй');
-document.getElementById('');
-var a = 10;
-console.log(a);
-
 //рандомизатор
 function getRandomInt(min, max) {
    min = Math.ceil(min);
@@ -16,7 +11,6 @@ function getRandomArrayOfInt(len) {
    for (let i = 0; i < len; i++) {
       arr[i] = getRandomInt(0, len);
    }
-   console.log(arr);
    return arr;
 }
 //bubble sort
@@ -38,6 +32,48 @@ function bubbleSort(inArr) {
    return arr;
 }
 
+function qSort(arr1) {
+   //базовый случай
+   var arr = arr1.slice();
+   if (arr.length <= 1) {
+      return arr;
+   }
+   if (arr.length == 2) {
+      if (arr[0] < arr[1]) {
+         return arr;
+      }
+      return [arr[1], arr[0]];
+   }
+
+   //рекурсивный случай
+   var centerIndex = getRandomInt(1, arr.length);
+   var center = arr[centerIndex];
+   console.log(' ')   
+   console.log('centerIndex = ' + centerIndex + '  center = ' + center);
+   arr.splice(centerIndex, 1);
+
+   var leftArr = [];
+   var rightArr = [];
+
+   arr.forEach((element) => {
+      if (element < center) {
+         leftArr.push(element);
+      } else {
+         rightArr.push(element);
+      }
+   });
+   console.log('left: ' + leftArr);
+   console.log('right: ' + rightArr);
+
+   leftArr = qSort(leftArr);
+   rightArr = qSort(rightArr);
+
+   var forReturn = [];
+   leftArr.push(center);
+   forReturn = leftArr.concat(rightArr);
+   return forReturn;
+}
+
 function binarSearch(arr, search) {
    var left = 0;
    var right = arr.length - 1;
@@ -46,8 +82,8 @@ function binarSearch(arr, search) {
    while (left <= right) {
       counter++;
       center = Math.floor((left + right) / 2);
-      console.log(left, right);
-      console.log(center);
+      // console.log(left, right);
+      // console.log(center);
       if (arr[center] == search) {
          return [center, counter];
       } else if (search < arr[center]) {
@@ -59,42 +95,92 @@ function binarSearch(arr, search) {
    return -1;
 }
 
-// const ans = binarSearch(arr);
-// console.log('Искомое: ', search)
-// if (ans != -1) {
-//    console.log('Ответ: '  ,ans[0]);
-//    console.log('Элемент: ' + arr[ans[0]]);
-//    console.log('Количество иттераций: ' + ans[1])
-// } else {
-//    console.log('Элемент не найден')
-// }
+function intLen(a) {
+   return String(a).length;
+}
+function printItem(item, itemLen) {
+   result.innerHTML += item;
+   for (let i = 0; i <= itemLen - intLen(item); i++) {
+      result.innerHTML += '&ensp;';
+   }
+}
+function getMaxOfArray(arr) {
+   return Math.max.apply(null, arr);
+}
+function printArray(arr) {
+   const itemLen = intLen(getMaxOfArray(arr));
 
-function go() {
+   arr.forEach((element) => {
+      printItem(element, itemLen);
+   });
+}
+
+var result = document.getElementById('for-result');
+
+function reset() {
+   result.innerHTML = '';
+}
+
+function generate() {
+   result.innerHTML = '';
+   console.log('Start generate');
+   const search = Number(document.getElementById('search').value);
    const len = Number(document.getElementById('len').value);
-   var result = document.getElementById('for-result');
+   console.log('Desried number: ' + search);
+   console.log('Array size: ' + len);
    if (len != 0) {
       var arr = getRandomArrayOfInt(len);
 
       result.innerHTML += 'Random array: ';
-      arr.forEach((element) => {
-         result.innerHTML += element;
-         result.innerHTML += ' ';
-      });
+      printArray(arr);
 
       result.innerHTML += '</br>Sorted array: ';
       arr = bubbleSort(arr);
-      arr.forEach((element) => {
-         result.innerHTML += element;
-         result.innerHTML += ' ';
-      });
-
-      const search = Number(document.getElementById('search').value);
+      printArray(arr);
 
       result.innerHTML += '</br></br>Search result:</br>';
       ans = binarSearch(arr, search);
       if (ans == -1) {
-         result.innerHTML += 'not found';
+         result.innerHTML += 'desired number: ' + search;
+         result.innerHTML += '</br>not found';
       } else {
+         result.innerHTML += 'desired number: ' + search;
+         result.innerHTML += '</br>';
+         result.innerHTML += 'element position: ' + ans[0];
+         result.innerHTML += '</br>';
+         result.innerHTML += 'number of iterations: ' + ans[1];
+      }
+      result.innerHTML += '<div class="lineJS"></div>';
+   }
+
+   // result.innerHTML+='test'
+}
+
+function generateQuick() {
+   result.innerHTML = '';
+   console.log('Start generate');
+   const search = Number(document.getElementById('search').value);
+   const len = Number(document.getElementById('len').value);
+   console.log('Desried number: ' + search);
+   console.log('Array size: ' + len);
+   if (len != 0) {
+      var arr = getRandomArrayOfInt(len);
+
+      result.innerHTML += 'Random array: ';
+      printArray(arr);
+
+      result.innerHTML += '</br>Sorted array: ';
+      arr = qSort(arr);
+      printArray(arr);
+
+      result.innerHTML += '</br></br>Search result:</br>';
+      ans = binarSearch(arr, search);
+      if (ans == -1) {
+         result.innerHTML += 'desired number: ' + search;
+         result.innerHTML += '</br>not found';
+      } else {
+         result.innerHTML += 'desired number: ' + search;
+         result.innerHTML += '</br>';
          result.innerHTML += 'element position: ' + ans[0];
          result.innerHTML += '</br>';
          result.innerHTML += 'number of iterations: ' + ans[1];
