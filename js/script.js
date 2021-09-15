@@ -51,7 +51,7 @@ function qSort(arr1) {
    //рекурсивный случай
    let centerIndex = getRandomInt(1, arr.length);
    let center = arr[centerIndex];
-   console.log(' ')   
+   console.log(' ');
    console.log('centerIndex = ' + centerIndex + '  center = ' + center);
    arr.splice(centerIndex, 1);
 
@@ -65,7 +65,7 @@ function qSort(arr1) {
          rightArr.push(element);
       }
    });
-   
+
    leftArr = qSort(leftArr);
    rightArr = qSort(rightArr);
 
@@ -190,4 +190,19 @@ function generateQuick() {
    }
 
    // result.innerHTML+='test'
+}
+
+function pResult(str) {
+   result.innerHTML += str;
+}
+
+function pizda() {
+   let string = 'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   let result = document.getElementById('for-result');
+   for (let i = 0; i < 26; i++){
+      pResult(`{
+         "before": ["${string[i]}"],
+         "after": ["${string[i+27]}"]
+      },`)
+   }
 }
